@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Clock</title>
+
+    <style>
+      body {
+        background-color: black;
+      }
+      .clock {
+        position: absolute;
+        color: lime;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 60px;
+        font-family: Orbitron;
+        letter-spacing: 7px;
+      }
+      .row {
+        border-radius: 5px;
+        position: absolute;
+        top: 20%;
+        left: 20%;
+        display: flex;
+      }
+      .col {
+        background-color: antiquewhite;
+        padding: 3rem;
+        margin-left: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="row">
+      <div class="col"><a href="./clock.html">Clock-project</a></div>
+      <div class="col">
+        <a href="./caluculator.html">Caluculator-project</a>
+      </div>
+      <div class="col"><a href="./todo-list.html">To Do list Project</a></div>
+    </div>
+    <div id="digitalClock" class="clock"></div>
+    <script>
+      function showTime() {
+        var date = new Date();
+        var hour = date.getHours();
+        var minutes = date.getMinutes();
+        var seconds = date.getSeconds();
+        var session = "AM";
+        if (hour == 0) {
+          hour = 12;
+        }
+        if (hour > 12) {
+          hour = hour - 12;
+          session = "PM";
+        }
+
+        // if(hour<10){
+        //     hour = "0"+hour;
+        // }
+        // if(minutes<10){
+        //     minutes = "0"+minutes;
+        // }
+        // if(seconds<10){
+        //     seconds = "0"+seconds;
+        // }
+        hour = hour < 10 ? "0" + hour : hour;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        document.getElementById("digitalClock").innerHTML =
+          hour + ":" + minutes + ":" + seconds + "" + session;
+        setTimeout(showTime, 1000);
+      }
+      showTime();
+      document.getElementById("demo").innerHTML = "welcome to DOM";
+    </script>
+  </body>
+</html>
